@@ -13,3 +13,7 @@ Local.
 4. Setup "user" module
 5. Setup config for the application
 6. Load db configuration from the application config
+7. Setup validation layer
+8. Setup auth interceptors
+9. API documentation
+10. 
