@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ProfileModule } from './modules/profile';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProfileEntity } from './modules/profile/entity';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config';
 
 @Module({
   imports: [
@@ -16,6 +18,7 @@ import { ProfileEntity } from './modules/profile/entity';
       entities: [ProfileEntity],
       synchronize: true,
     }),
+    ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
   ],
 })
 export class AppModule {}
