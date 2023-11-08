@@ -1,16 +1,23 @@
-import { Controller, Get, Logger } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Post } from '@nestjs/common';
 import { ProfileService } from './service';
 
+class CreateProfileDto {
+  name: string;
+}
 @Controller('/profile')
 export class ProfileController {
   private readonly logger = new Logger(ProfileController.name);
 
   constructor(private profileService: ProfileService) {}
   @Get()
-  async findAll(): Promise<string> {
+  async findAll(): Promise<any[]> {
     const result = await this.profileService.findAll();
-    this.logger.log(result[0]);
 
-    return 'this is something';
+    return result;
+  }
+
+  @Post()
+  async create(@Body() body: CreateProfileDto): Promise<boolean> {
+    return this.profileService.create(body.name);
   }
 }

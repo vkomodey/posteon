@@ -6,7 +6,7 @@ export enum ProfileProfession {
 }
 
 @Entity()
-export class ProfileEntity {
+export class Profile {
   @PrimaryGeneratedColumn()
   id: number;
 
