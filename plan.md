@@ -7,7 +7,9 @@ Global:
 
 Local.
 
-1. Setup compose instance with databases
-2. Setup integration with database using typeorm
+1. Setup compose instance with databases: DONE
+2. Setup integration with database using typeorm: DONE
 3. Setup migrations
 4. Setup "user" module
+5. Setup config for the application
+6. Load db configuration from the application config
