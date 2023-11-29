@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Logger, Post } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Post, Query, Req, Res } from '@nestjs/common';
 import { ProfileService } from './service';
 
 class CreateProfileDto {
@@ -10,7 +10,7 @@ export class ProfileController {
 
   constructor(private profileService: ProfileService) {}
   @Get()
-  async findAll(): Promise<any[]> {
+  async findAll(@Query('firstName') firstName): Promise<any[]> {
     const result = await this.profileService.findAll();
 
     return result;

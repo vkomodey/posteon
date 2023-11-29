@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-export enum ProfileProfession {
+export enum UserType {
   CLIENT = 'client',
   CONTRACTOR = 'contractor',
 }
 
 @Entity()
-export class Profile {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,12 +16,9 @@ export class Profile {
   @Column()
   lastName: string;
 
-  @Column()
-  balance: number;
-
   @Column({
     type: 'enum',
-    enum: ProfileProfession,
+    enum: UserType,
   })
-  profession: ProfileProfession;
+  type: UserType;
 }
