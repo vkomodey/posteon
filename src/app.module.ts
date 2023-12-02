@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
-import { ProfileModule } from './modules/user';
+import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config';
 import { TypeOrmConfigService } from './db/db.config';
+import { APIModule } from './modules/api/api.module';
 
 @Module({
   imports: [
-    ProfileModule,
+    UserModule,
+    APIModule,
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,

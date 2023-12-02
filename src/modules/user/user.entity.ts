@@ -7,8 +7,8 @@ export enum UserType {
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   firstName: string;
@@ -19,6 +19,7 @@ export class User {
   @Column({
     type: 'enum',
     enum: UserType,
+    default: UserType.CLIENT
   })
   type: UserType;
 }
