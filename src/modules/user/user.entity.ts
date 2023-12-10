@@ -1,25 +1,42 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-export enum UserType {
-  CLIENT = 'client',
-  CONTRACTOR = 'contractor',
-}
-
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    name: 'first_name',
+    length: 50,
+  })
   firstName: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    name: 'last_name',
+    length: 50,
+  })
   lastName: string;
 
   @Column({
-    type: 'enum',
-    enum: UserType,
-    default: UserType.CLIENT
+    type: 'varchar',
+    name: 'phone',
+    length: 30,
   })
-  type: UserType;
+  phone: string;
+
+  @Column({
+    type: 'varchar',
+    name: 'email',
+    length: 60,
+    unique: true,
+  })
+  email: string;
+
+  @Column({
+    type: 'varchar',
+    name: 'password',
+  })
+  password: string;
 }
