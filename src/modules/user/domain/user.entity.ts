@@ -22,6 +22,8 @@ export class UserEntity extends Entity {
     this._lastName = lastName;
     this._email = new Email(email);
     this._phone = new Phone(phone);
+
+    this.validate();
   }
 
   get id() {
@@ -32,8 +34,18 @@ export class UserEntity extends Entity {
     return this._firstName;
   }
 
+  set firstName(newName: string) {
+    this._firstName = newName;
+    this.validate();
+  }
+
   get lastName() {
     return this._lastName;
+  }
+
+  set lastName(newName: string) {
+    this._lastName = newName;
+    this.validate();
   }
 
   get email(): Email {
@@ -45,7 +57,7 @@ export class UserEntity extends Entity {
   }
 
   validate() {
-    let errors: ErrorField[];
+    let errors: ErrorField[] = [];
 
     if (!this._firstName) {
       errors.push(new ErrorField('firstName', "First Name is empty"));
