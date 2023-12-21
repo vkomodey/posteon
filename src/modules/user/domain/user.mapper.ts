@@ -1,4 +1,4 @@
-import { DataMapper } from 'src/lib/data.mapper';
+import { DataMapper } from 'src/lib/domain/data.mapper';
 import { UserEntity } from './user.entity';
 import { User } from '../database/user.entity';
 
@@ -21,6 +21,8 @@ export class UserMapper implements DataMapper<UserEntity, User> {
       userDbObject.lastName,
       userDbObject.phone,
       userDbObject.email,
+      userDbObject.createdAt,
+      userDbObject.updatedAt
     );
   }
 }
