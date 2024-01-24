@@ -11,7 +11,7 @@ export class Phone implements ValueObject {
   }
 
   validate() {
-    if(!this.phone) {
+    if (!this.phone) {
       const errorField = new ErrorField('email', 'Email is empty');
       throw new IllegalValueObjectState('Invalid Email', [errorField]);
     }

@@ -11,7 +11,7 @@ export class Email implements ValueObject {
   }
 
   validate() {
-    if(!this.email) {
+    if (!this.email) {
       const errorField = new ErrorField('email', 'Email is empty');
       throw new IllegalValueObjectState('Invalid Email', [errorField]);
     }

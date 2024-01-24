@@ -5,7 +5,7 @@ export class DomainError extends Error {
 }
 
 export class ErrorField {
-  constructor(public key: string, public msg: string) {}
+  constructor(public key: string, public msg: string) { }
 }
 
 export class IllegalState extends DomainError {

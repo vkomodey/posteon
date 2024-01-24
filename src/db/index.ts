@@ -6,4 +6,4 @@ import { TypeOrmConfigService } from './db.config';
   imports: [ConfigService],
   providers: [TypeOrmConfigService],
 })
-export class DbConfig {}
+export class DbConfig { }

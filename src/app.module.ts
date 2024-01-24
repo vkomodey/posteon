@@ -16,4 +16,4 @@ import { APIModule } from './modules/api/api.module';
     }),
   ],
 })
-export class AppModule {}
+export class AppModule { }
