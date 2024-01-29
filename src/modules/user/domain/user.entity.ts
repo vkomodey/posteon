@@ -8,12 +8,14 @@ export class UserEntity extends Entity {
   private _lastName: string;
   private _email: Email;
   private _phone: Phone;
+  private _password: string;
   constructor(
     id: string,
     firstName: string,
     lastName: string,
     email: string,
     phone: string,
+    password?: string,
     createdAt?: Date,
     updatedAt?: Date,
   ) {
@@ -22,6 +24,7 @@ export class UserEntity extends Entity {
     this._lastName = lastName;
     this._email = new Email(email);
     this._phone = new Phone(phone);
+    this._password = password;
 
     this.validate();
   }
@@ -54,6 +57,10 @@ export class UserEntity extends Entity {
 
   get phone(): Phone {
     return this._phone;
+  }
+
+  get password(): string {
+    return this._password;
   }
 
   validate() {
