@@ -1,18 +1,14 @@
-import { Body, Controller, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, UsePipes } from '@nestjs/common';
 import { RegisterUseCase } from '../user/use-cases/register/register.use-case';
+import { RequestSchemaValidator } from './request.validator';
+import { CreateUserSchema, createUserSchema } from './request.schema';
 
-class SignupDTO {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  password: string;
-}
 @Controller('/api')
 export class APIController {
   constructor(private registerUseCase: RegisterUseCase) {}
   @Post('/signup')
-  async signup(@Body() signupDTO: SignupDTO): Promise<boolean> {
+  @UsePipes(new RequestSchemaValidator(createUserSchema))
+  async signup(@Body() signupDTO: CreateUserSchema): Promise<boolean> {
     await this.registerUseCase.execute(
       signupDTO.firstName,
       signupDTO.lastName,
