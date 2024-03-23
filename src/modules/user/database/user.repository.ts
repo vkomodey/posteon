@@ -18,6 +18,13 @@ export class UserRepository {
     return this.dataMapper.toDomain(userDbEntity);
   }
 
+  async existsByEmail(email: string): Promise<boolean> {
+    const numberOfDocs = await this.dbRepo.countBy({email});
+
+
+    return numberOfDocs > 0;
+  }
+
   async save(user: UserEntity): Promise<void> {
     const userDbEntity = this.dataMapper.toPersistence(user);
 
