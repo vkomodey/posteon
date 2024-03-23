@@ -1,14 +1,16 @@
-import { Body, Controller, Get, Post, Put, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { RegisterUseCase } from '../user/use-cases/register/register.use-case';
-import { RequestSchemaValidator } from './request.validator';
-import { CreateUserSchema, createUserSchema } from './request.schema';
+import { CreateUserDto } from './dto/create-user.dto';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('/api')
 export class APIController {
   constructor(private registerUseCase: RegisterUseCase) {}
   @Post('/signup')
-  @UsePipes(new RequestSchemaValidator(createUserSchema))
-  async signup(@Body() signupDTO: CreateUserSchema): Promise<boolean> {
+  @UsePipes(new ValidationPipe({transform: true}))
+  @ApiResponse({status: 200, description: 'Successful'})
+  @ApiResponse({status: 401, description: 'User can\'t be created'})
+  async signup(@Body() signupDTO: CreateUserDto): Promise<boolean> {
     await this.registerUseCase.execute(
       signupDTO.firstName,
       signupDTO.lastName,
