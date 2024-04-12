@@ -1,10 +1,9 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { User } from "./user.db.entity";
-import { UserEntity } from "../domain/user.entity";
-import { DataMapper } from "src/lib/domain/data.mapper";
-
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './user.db.entity';
+import { UserEntity } from '../domain/user.entity';
+import { DataMapper } from 'src/lib/domain/data.mapper';
 
 @Injectable()
 export class UserRepository {
@@ -18,9 +17,14 @@ export class UserRepository {
     return this.dataMapper.toDomain(userDbEntity);
   }
 
-  async existsByEmail(email: string): Promise<boolean> {
-    const numberOfDocs = await this.dbRepo.countBy({email});
+  async findByEmail(email: string): Promise<UserEntity> {
+    const userDbEntity = await this.dbRepo.findOneBy({ email });
 
+    return this.dataMapper.toDomain(userDbEntity);
+  }
+
+  async existsByEmail(email: string): Promise<boolean> {
+    const numberOfDocs = await this.dbRepo.countBy({ email });
 
     return numberOfDocs > 0;
   }
@@ -54,7 +58,7 @@ export class UserMapper implements DataMapper<UserEntity, User> {
       userDbObject.email,
       userDbObject.password,
       userDbObject.createdAt,
-      userDbObject.updatedAt
+      userDbObject.updatedAt,
     );
   }
 }
