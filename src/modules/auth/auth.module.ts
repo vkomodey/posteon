@@ -5,6 +5,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth.constants';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -15,7 +16,13 @@ import { jwtConstants } from './auth.constants';
       signOptions: { expiresIn: '60s' },
     }),
   ],
-  providers: [AuthService, JwtAuthGuard],
+  providers: [
+    AuthService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
   exports: [AuthService],
 })
 export class AuthModule {}

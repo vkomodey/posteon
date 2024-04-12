@@ -12,6 +12,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
 import { AuthService } from '../auth/auth.service';
 import { SigninDTO } from './dto/signin.dto';
+import { Public } from 'src/lib/public-route';
 
 @Controller('/api')
 export class APIController {
@@ -20,6 +21,7 @@ export class APIController {
     private authService: AuthService,
   ) {}
 
+  @Public()
   @Post('/signup')
   @UsePipes(new ValidationPipe({ transform: true }))
   @ApiResponse({ status: 200, description: 'Successful' })
@@ -35,6 +37,7 @@ export class APIController {
     return true;
   }
 
+  @Public()
   @Post('/signin')
   signin(@Body() signinDTO: SigninDTO) {
     return this.authService.signIn(signinDTO.email, signinDTO.password);
