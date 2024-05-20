@@ -4,14 +4,17 @@ import {
   Get,
   Post,
   Put,
+  Request,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { RegisterUseCase } from '../user/use-cases/register/register.use-case';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
+import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { AuthService } from '../auth/auth.service';
-import { SigninDTO } from './dto/signin.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Public } from 'src/lib/public-route';
 
 @Controller('/api')
@@ -38,12 +41,14 @@ export class APIController {
   }
 
   @Public()
+  @UseGuards(LocalAuthGuard)
   @Post('/signin')
-  signin(@Body() signinDTO: SigninDTO) {
-    return this.authService.signIn(signinDTO.email, signinDTO.password);
+  signin(@Request() req) {
+    return this.authService.signIn(req.user);
   }
 
   @Get('/profile')
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   getProfile(): boolean {
     return true;
   }

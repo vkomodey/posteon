@@ -12,13 +12,20 @@ export class UserRepository {
     this.dataMapper = new UserMapper();
   }
 
-  async findById(id: string): Promise<UserEntity> {
-    const userDbEntity = await this.dbRepo.findOneById(id);
+  async findById(id: string): Promise<UserEntity | null> {
+    const userDbEntity = await this.dbRepo.findOneBy({ id: id });
+    if (!userDbEntity) {
+      return null;
+    }
     return this.dataMapper.toDomain(userDbEntity);
   }
 
-  async findByEmail(email: string): Promise<UserEntity> {
+  async findByEmail(email: string): Promise<UserEntity | null> {
     const userDbEntity = await this.dbRepo.findOneBy({ email });
+
+    if (!userDbEntity) {
+      return null;
+    }
 
     return this.dataMapper.toDomain(userDbEntity);
   }

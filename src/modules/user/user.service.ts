@@ -4,7 +4,5 @@ import { User } from './database/user.db.entity';
 
 @Injectable()
 export class UserService {
-  constructor(
-  ) { }
-
+  constructor() {}
 }

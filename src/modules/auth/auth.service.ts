@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../user/database/user.repository';
 import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
@@ -10,14 +10,23 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signIn(email: string, pass: string): Promise<{ access_token: string }> {
+  async validateUser(email: string, pass: string): Promise<any> {
     const user = await this.userRepo.findByEmail(email);
-    const arePasswordsEqual = await argon2.verify(user?.password, pass);
-
-    if (!arePasswordsEqual) {
-      throw new UnauthorizedException();
+    if (!user) {
+      return null;
     }
 
+    const { password, ...result } = user;
+    const arePasswordsEqual = await argon2.verify(password, pass);
+
+    if (!arePasswordsEqual) {
+      return null;
+    }
+
+    return result;
+  }
+
+  async signIn(user: any): Promise<{ access_token: string }> {
     const payload = { sub: user.id, email: user.email };
 
     return {
