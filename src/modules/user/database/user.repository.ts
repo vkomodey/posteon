@@ -4,9 +4,11 @@ import { Repository } from 'typeorm';
 import { User } from './user.db.entity';
 import { UserEntity } from '../domain/user.entity';
 import { DataMapper } from 'src/lib/domain/data.mapper';
+import { IUserRepository } from './user.repository.interface';
+import { ObjectLiteral } from 'src/lib/types/object-literal.type';
 
 @Injectable()
-export class UserRepository {
+export class UserRepository implements IUserRepository {
   private dataMapper: UserMapper;
   constructor(@InjectRepository(User) private dbRepo: Repository<User>) {
     this.dataMapper = new UserMapper();
@@ -18,6 +20,11 @@ export class UserRepository {
       return null;
     }
     return this.dataMapper.toDomain(userDbEntity);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async findAll(query: ObjectLiteral): Promise<UserEntity[]> {
+    return [];
   }
 
   async findByEmail(email: string): Promise<UserEntity | null> {
