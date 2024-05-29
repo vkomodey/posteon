@@ -8,8 +8,13 @@ import { UserEntity } from '../../domain/user.entity';
 @Injectable()
 export class RegisterUseCase {
   constructor(private userRepository: UserRepository) {}
-  async execute(firstName: string, lastName: string, email: string, phone: string, password: string): Promise<void> {
-
+  async execute(
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    password: string,
+  ): Promise<void> {
     const hashedPassword = await argon2.hash(password);
     const userEntity = new UserEntity(
       uuid(),
@@ -17,13 +22,15 @@ export class RegisterUseCase {
       lastName,
       email,
       phone,
-      hashedPassword
+      hashedPassword,
     );
-    
+
     const userExists = await this.userRepository.existsByEmail(email);
 
     if (userExists) {
-      throw new BadRequestException({message: 'User already exists by this email'});
+      throw new BadRequestException({
+        message: 'User already exists by this email',
+      });
     }
 
     await this.userRepository.save(userEntity);

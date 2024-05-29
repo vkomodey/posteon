@@ -3,7 +3,6 @@ export abstract class Entity {
   protected _createdAt: Date;
   protected _updatedAt: Date;
 
-
   constructor(id: string, createdAt?: Date, updatedAt?: Date) {
     this._id = id;
     this._createdAt = createdAt || new Date();

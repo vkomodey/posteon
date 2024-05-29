@@ -67,7 +67,7 @@ export class UserEntity extends Entity {
     let errors: ErrorField[] = [];
 
     if (!this._firstName) {
-      errors.push(new ErrorField('firstName', "First Name is empty"));
+      errors.push(new ErrorField('firstName', 'First Name is empty'));
     }
 
     if (!this._lastName) {
@@ -75,7 +75,7 @@ export class UserEntity extends Entity {
     }
 
     if (errors.length > 0) {
-      throw new IllegalEntityState("User is invalid", errors);
+      throw new IllegalEntityState('User is invalid', errors);
     }
   }
 }
