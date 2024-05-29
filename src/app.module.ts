@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config';
 import { TypeOrmConfigService } from './db/db.config';
 import { APIModule } from './modules/api/api.module';
@@ -15,9 +15,19 @@ import { LoggerModule } from 'nestjs-pino';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
-    LoggerModule.forRoot({
-      pinoHttp: {
-        transport: { target: 'pino-pretty' },
+    LoggerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        const isProduction = configService.get<string>('env') === 'production';
+
+        return {
+          pinoHttp: {
+            level: isProduction ? 'info' : 'debug',
+            transport: isProduction ? undefined : { target: 'pino-pretty' },
+            redact: ['req.headers', 'res.headers'],
+          },
+        };
       },
     }),
   ],
