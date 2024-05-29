@@ -42,13 +42,16 @@ export class AllExceptionFilter implements ExceptionFilter {
   getMessage(exception: unknown): string {
     const defaultMsg = 'Something went wrong';
     const isDevelopment = this.config.get<string>('app_env') === 'development';
-    if (!isDevelopment) {
-      return defaultMsg;
-    }
+
     if (exception instanceof HttpException) {
-      return exception.getStatus() === HttpStatus.INTERNAL_SERVER_ERROR
-        ? exception.message
-        : defaultMsg;
+      if (
+        exception.getStatus() === HttpStatus.INTERNAL_SERVER_ERROR &&
+        !isDevelopment
+      ) {
+        return defaultMsg;
+      }
+
+      return exception.message;
     } else if (exception instanceof Error) {
       const stack = exception.stack;
       return exception.message + isDevelopment ? ` ${stack}` : '';

@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Logger,
   Post,
   Put,
   Request,
@@ -15,9 +16,11 @@ import { ApiResponse } from '@nestjs/swagger';
 import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { AuthService } from '../auth/auth.service';
 import { Public } from 'src/lib/public-route';
+import { NextFunction } from 'express';
 
 @Controller('/api')
 export class APIController {
+  private logger = new Logger(APIController.name);
   constructor(
     private registerUseCase: RegisterUseCase,
     private authService: AuthService,
