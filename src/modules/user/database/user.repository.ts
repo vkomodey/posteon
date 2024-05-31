@@ -4,27 +4,16 @@ import { Repository } from 'typeorm';
 import { User } from './user.db.entity';
 import { UserEntity } from '../domain/user.entity';
 import { DataMapper } from 'src/lib/domain/data.mapper';
-import { IUserRepository } from './user.repository.interface';
-import { ObjectLiteral } from 'src/lib/types/object-literal.type';
+import { AbstractRepository } from 'src/db/repository';
 
 @Injectable()
-export class UserRepository implements IUserRepository {
-  private dataMapper: UserMapper;
-  constructor(@InjectRepository(User) private dbRepo: Repository<User>) {
+export class UserRepository extends AbstractRepository<UserEntity, User> {
+  protected dataMapper: UserMapper;
+  protected dbRepo: Repository<User>;
+  constructor(@InjectRepository(User) dbRepo: Repository<User>) {
+    super();
+    this.dbRepo = dbRepo;
     this.dataMapper = new UserMapper();
-  }
-
-  async findById(id: string): Promise<UserEntity | null> {
-    const userDbEntity = await this.dbRepo.findOneBy({ id: id });
-    if (!userDbEntity) {
-      return null;
-    }
-    return this.dataMapper.toDomain(userDbEntity);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async findAll(query: ObjectLiteral): Promise<UserEntity[]> {
-    return [];
   }
 
   async findByEmail(email: string): Promise<UserEntity | null> {
@@ -41,12 +30,6 @@ export class UserRepository implements IUserRepository {
     const numberOfDocs = await this.dbRepo.countBy({ email });
 
     return numberOfDocs > 0;
-  }
-
-  async save(user: UserEntity): Promise<void> {
-    const userDbEntity = this.dataMapper.toPersistence(user);
-
-    await this.dbRepo.save(userDbEntity);
   }
 }
 

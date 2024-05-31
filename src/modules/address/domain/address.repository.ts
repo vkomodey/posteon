@@ -1,39 +1,30 @@
-import { Injectable, PlainLiteralObject } from '@nestjs/common';
-import { IRepository } from 'src/db/repository.interface';
+import { Injectable } from '@nestjs/common';
 import { AddressEntity } from './address.entity';
 import { Address } from '../database/address.db.entity';
 import { DataMapper } from 'src/lib/domain/data.mapper';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ObjectLiteral, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
+import { AbstractRepository } from 'src/db/repository';
 
 @Injectable()
-export class AddressRepository implements IRepository<Address> {
-  private dataMapper: AddressMapper;
-  constructor(@InjectRepository(Address) private dbRepo: Repository<Address>) {
+export class AddressRepository extends AbstractRepository<
+  AddressEntity,
+  Address
+> {
+  protected dataMapper: AddressMapper;
+  protected dbRepo: Repository<Address>;
+  constructor(@InjectRepository(Address) dbRepo: Repository<Address>) {
+    super();
+    this.dbRepo = dbRepo;
     this.dataMapper = new AddressMapper();
   }
 
-  async findById(id: string): Promise<AddressEntity | null> {
-    const addressDbEntity = await this.dbRepo.findOneBy({ id });
-    if (!addressDbEntity) {
-      return null;
-    }
-
-    return this.dataMapper.toDomain(addressDbEntity);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async findAll(query: ObjectLiteral): Promise<AddressEntity[]> {
-    return [];
-  }
-
-  async save(address: AddressEntity): Promise<void> {
-    const addressDbEntity = this.dataMapper.toPersistence(address);
-
-    await this.dbRepo.save(addressDbEntity);
-  }
-
-  async findOne(queryRaw: PlainLiteralObject) {
+  async findOne(queryRaw: {
+    state: string;
+    city: string;
+    zipcode: string;
+    address: string;
+  }) {
     const result = await this.dbRepo.findOneBy({
       state: queryRaw.state,
       city: queryRaw.city,
