@@ -64,7 +64,7 @@ export class UserEntity extends Entity {
   }
 
   validate() {
-    let errors: ErrorField[] = [];
+    const errors: ErrorField[] = [];
 
     if (!this._firstName) {
       errors.push(new ErrorField('firstName', 'First Name is empty'));
