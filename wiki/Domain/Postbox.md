@@ -1,0 +1,3 @@
+- Postbox is a place where people put and gather their packages.
+- Postbox is being replenished with incoming packages by Posteon vehicles.
+- Postbox has it’s own cells, which is described under “[[Postbox Cell]]” section

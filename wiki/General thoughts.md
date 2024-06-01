@@ -1,0 +1,3 @@
+- Incoming requests go to the API module. The API module is a separate module
+- API Module passes the request to the use case
+- Use case generates the response and passes it back to the API layer

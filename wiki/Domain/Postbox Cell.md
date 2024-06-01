@@ -1,0 +1,3 @@
+- Postbox cell has it’s own size(Large, Medium and Small)
+- Postbox cell can have different statuses. Opened, Closed, Empty, Not Empty
+- Also Postbox has it's 
