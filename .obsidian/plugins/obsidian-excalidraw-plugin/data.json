@@ -1,5 +1,5 @@
 {
-  "folder": "Excalidraw",
+  "folder": "wiki-excalidraw",
   "embedUseExcalidrawFolder": false,
   "templateFilePath": "Excalidraw/Template.excalidraw",
   "scriptFolderPath": "Excalidraw/Scripts",
@@ -8,7 +8,7 @@
   "autosaveInterval": 15000,
   "autosaveIntervalDesktop": 15000,
   "autosaveIntervalMobile": 10000,
-  "drawingFilenamePrefix": "Drawing ",
+  "drawingFilenamePrefix": "posteon",
   "drawingEmbedPrefixWithFilename": true,
   "drawingFilnameEmbedPostfix": " ",
   "drawingFilenameDateTime": "YYYY-MM-DD HH.mm.ss",
