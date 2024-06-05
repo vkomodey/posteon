@@ -4,7 +4,6 @@ import {
   Entity,
   JoinTable,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -38,4 +37,5 @@ export class Postbox {
     name: 'updated_at',
   })
   updatedAt: Date;
+  postcells: any;
 }

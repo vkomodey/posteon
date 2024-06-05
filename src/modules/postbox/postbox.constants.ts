@@ -1,4 +1,4 @@
 export enum PostboxStatuses {
-  active='active',
-  notActive='notActive'
+  active = 'active',
+  notActive = 'notActive',
 }
