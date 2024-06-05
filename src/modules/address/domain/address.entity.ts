@@ -1,7 +1,6 @@
 import { states } from 'src/constants/states';
 import { Entity } from 'src/lib/domain/entity';
 import { ErrorField, IllegalEntityState } from 'src/lib/domain/errors';
-import { IsPostalCode } from 'class-validator';
 
 export class AddressEntity extends Entity {
   constructor(

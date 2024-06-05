@@ -6,10 +6,14 @@ import configuration from './config';
 import { TypeOrmConfigService } from './db/db.config';
 import { APIModule } from './modules/api/api.module';
 import { LoggerModule } from 'nestjs-pino';
+import { AddressModule } from './modules/address/address.module';
+import { PostboxModule } from './modules/postbox/postbox.module';
 
 @Module({
   imports: [
     UserModule,
+    AddressModule,
+    PostboxModule,
     APIModule,
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     TypeOrmModule.forRootAsync({

@@ -11,11 +11,9 @@
             "id": "3b5932781c99c17c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "wiki/Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "wiki/Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "wiki/Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "wiki/Kanban.md"
               }
             }
           }
@@ -149,15 +147,24 @@
   },
   "active": "3b5932781c99c17c",
   "lastOpenFiles": [
-    "wiki/Kanban.md",
+    "dist/modules/address/database/address.repository.d.ts",
+    "dist/modules/address/database/address.repository.js",
+    "dist/modules/address/database/address.repository.js.map",
+    "src/modules/address/database/address.repository.ts",
+    "dist/tsconfig.build.tsbuildinfo",
+    "dist/modules/user/database/user.repository.interface.d.ts",
+    "dist/modules/user/database/user.repository.interface.js",
+    "dist/modules/user/database/user.repository.interface.js.map",
+    "dist/modules/postbox/domain/postbox.entity.js.map",
+    "dist/modules/postbox/domain/postbox.entity.js",
+    "dist/modules/postbox/domain/postbox.entity.d.ts",
     "README.md",
+    "wiki/Kanban.md",
     "wiki/wiki-excalidraw/mainflow.excalidraw.md",
-    "wiki/wiki-excalidraw",
     "wiki/main-flow.png",
     "models.md",
     "plan.md",
     "wiki/main-flow.png",
-    "Excalidraw",
     "wiki/Untitled.canvas",
     "Untitled.md",
     "Domain/Postbox Cell.md",
@@ -168,15 +175,12 @@
     "Kanban cards/Address value object.md",
     "Use Cases/User.md",
     "Kanban.md",
-    "Kanban cards",
     "General thoughts.md",
     "Domain/User.md",
     "Untitled.canvas",
     "API.md",
     "Domain/Representation.md",
     "Excalidraw/Drawing 2023-12-20 21.35.26.excalidraw.md",
-    "Domain",
-    "Use Cases",
     "Use.md"
   ]
 }

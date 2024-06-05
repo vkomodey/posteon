@@ -6,9 +6,8 @@ kanban-plugin: basic
 
 ## Backlog
 
-- [ ] [[Base aggregate implementation]]
+- [ ] Add a proper readme.md to the repository's root
 - [ ] Package module
-- [ ] Postbox module
 - [ ] Query object for business layer
 - [ ] Setup errors structure:<br>- Base error<br>- Infra error<br>- App error<br>- API error(with a proper fields and description for a client)<br><br>Basic error fields<br>`errorId, message, stack?, cause?, requestId?, metadata?`<br><br>- [ ] Move /lib/domain/errors to new exception folder
 - [ ] Github resources: https://github.com/Sairyss/domain-driven-hexagon/blob/master/src/libs/exceptions/exception.base.ts
@@ -17,7 +16,7 @@ kanban-plugin: basic
 
 ## In Process
 
-- [ ] Add a proper readme.md to the repository's root
+- [ ] [[Base aggregate implementation]]
 
 
 ## Done

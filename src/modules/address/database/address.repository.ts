@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { AddressEntity } from './address.entity';
-import { Address } from '../database/address.db.entity';
+import { AddressEntity } from '../domain/address.entity';
+import { Address } from './address.db.entity';
 import { DataMapper } from 'src/lib/domain/data.mapper';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
