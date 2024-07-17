@@ -1,0 +1,1 @@
+It contains 2 addresses, the package itself, and appropriate postboxes(receiver and sender, which can be empty)

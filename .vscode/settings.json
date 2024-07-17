@@ -1,0 +1,4 @@
+{
+  "vim.vimrc.path": "$HOME/.config/nvim/init.vim",
+  "vim.vimrc.enable": true
+}

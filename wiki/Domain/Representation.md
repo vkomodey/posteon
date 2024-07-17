@@ -1,4 +1,4 @@
-Posteon is the app for sending and receiving physical packages. The application includes entities such as [[user]], [[postbox]], [[Package]], inventory, vehicle and etc.
+Posteon is the app for sending and receiving physical packages. The application includes entities such as [[user]], [[postbox]], [[wiki/Domain/Package/Package]], inventory, vehicle and etc.
 
 Domain terms:
 - User

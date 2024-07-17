@@ -1,4 +1,0 @@
-- A package has it’s own size(Large, Medium and Small)
-- A package has it's own weight(Large, Medium and Small)
-- An incoming or outgoing package has it’s meaning only within a receiving and sending side. So from the receiving side - it’s an incoming package and outgoing for sending party
-- User identifies the package by himself. So it's a completely valid case when a small package placed under a big Postbox Cell

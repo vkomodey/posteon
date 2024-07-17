@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "94dc0c2fcf6f5256",
+        "id": "d90848e1edebfb95",
         "type": "tabs",
         "children": [
           {
-            "id": "3b5932781c99c17c",
+            "id": "b864c9cfc0467f28",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -145,21 +145,30 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "3b5932781c99c17c",
+  "active": "b864c9cfc0467f28",
   "lastOpenFiles": [
-    "dist/modules/postbox/postcell/domain/postcell.entity.js.map",
-    "dist/modules/postbox/postcell/domain/postcell.entity.js",
-    "dist/modules/postbox/postcell/domain/postcell.entity.d.ts",
-    "dist/modules/postbox/postcell/domain",
-    "src/modules/postbox/postcell/domain/postcell.entity.ts",
-    "dist/modules/postbox/postcell/postcell.constants.d.ts",
-    "dist/modules/postbox/postcell/postcell.constants.js",
-    "dist/modules/postbox/postcell/postcell.constants.js.map",
-    "src/modules/postbox/postcell/postcell.constants.ts",
-    "dist/modules/postbox/postcell/database/postcell.repository.d.ts",
-    "dist/modules/postbox/postcell/database/postcell.repository.js",
+    "wiki/Domain/Package/Package.md",
+    "Package Entity(aggregate root).md",
+    "src/modules/package/domain/delivery.state-transition.ts",
+    "wiki/Domain/Package/Package Status.md",
+    "dist/modules/package/domain/package.delivery.d.ts",
+    "dist/modules/package/domain/package.delivery.js",
+    "dist/modules/package/domain/package.delivery.js.map",
+    "src/modules/package/domain/package.delivery.ts",
+    "wiki/Domain/Postbox.md",
+    "dist/modules/package/domain/package.activity.entity.d.ts",
+    "dist/modules/package/domain/package.activity.entity.js",
+    "dist/modules/package/domain/package.activity.entity.js.map",
+    "src/modules/package/domain/package.activity.entity.ts",
+    "dist/modules/package/package.constants.d.ts",
+    "wiki/Domain/Diagram.excalidraw.md",
+    "wiki/Domain/Package/Package Activity.md",
+    "wiki/Domain/Package/Package Delivery.md",
+    "wiki/Domain/Postbox Cell.md",
     "README.md",
     "wiki/Kanban.md",
+    "coverage/lcov-report/sort-arrow-sprite.png",
+    "coverage/lcov-report/favicon.png",
     "wiki/wiki-excalidraw/mainflow.excalidraw.md",
     "wiki/main-flow.png",
     "models.md",
@@ -178,9 +187,6 @@
     "General thoughts.md",
     "Domain/User.md",
     "Untitled.canvas",
-    "API.md",
-    "Domain/Representation.md",
-    "Excalidraw/Drawing 2023-12-20 21.35.26.excalidraw.md",
-    "Use.md"
+    "API.md"
   ]
 }
